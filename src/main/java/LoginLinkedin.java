@@ -13,7 +13,7 @@ public class LoginLinkedin {
         WebElement password = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
         password.sendKeys("Ultra_777");
         password.sendKeys(Keys.ENTER);
-
+        //password.submit();
     }
 }
 
