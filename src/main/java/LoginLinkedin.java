@@ -11,7 +11,7 @@ public class LoginLinkedin {
         WebElement login = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
         login.sendKeys("yura.ultra@gmail.com");
         WebElement password = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
-        password.sendKeys("UltraDaiver1");
+        password.sendKeys("Ultra_777");
         password.sendKeys(Keys.ENTER);
 
     }
