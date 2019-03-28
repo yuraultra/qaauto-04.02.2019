@@ -30,6 +30,6 @@ public class LinkedinLoginTest {
 
 
 
-        driver.close();
+        driver.quit();
     }
 }
