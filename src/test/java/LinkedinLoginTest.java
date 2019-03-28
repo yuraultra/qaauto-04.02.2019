@@ -23,8 +23,9 @@ public class LinkedinLoginTest {
 
         profileNavigationItem.isDisplayed();
 
-        Assert.assertTrue(!profileNavigationItem.isDisplayed(),
+        Assert.assertTrue(profileNavigationItem.isDisplayed(),
                 "profileNavigationItem item is not displayed in home page ");
+        Assert.assertEquals(driver.getTitle(),"LinkedIn","Home page title is wrong");
 
 
 
