@@ -25,11 +25,49 @@ public class LinkedinLoginTest {
 
         Assert.assertTrue(profileNavigationItem.isDisplayed(),
                 "profileNavigationItem item is not displayed in home page ");
-        Assert.assertEquals(driver.getTitle(),"LinkedIn","Home page title is wrong");
+        Assert.assertEquals(driver.getTitle(), "LinkedIn", "Home page title is wrong");
+        driver.quit();
+    }
+    @Test
+    public void notSuccessfulLoginTest() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.linkedin.com");
 
+        WebElement mailField = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
+        WebElement passField = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
+        WebElement submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
 
+        mailField.sendKeys("yura.ultra@ggmail.com");
+        passField.sendKeys("Ultra_777");
+        submit.click();
 
+        WebElement errorUserName = driver.findElement(By.xpath("//div[@id='error-for-username']"));
 
+        errorUserName.isDisplayed();
+
+        Assert.assertTrue(errorUserName.getText().contains("Этот адрес эл. почты не зарегистрирован в LinkedIn."),
+                "Login is wrong");
+        driver.quit();
+    }
+    @Test
+    public void notSuccessfulPasswordTest() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.linkedin.com");
+
+        WebElement mailField = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
+        WebElement passField = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
+        WebElement submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
+
+        mailField.sendKeys("yura.ultra@gmail.com");
+        passField.sendKeys("Ultra");
+        submit.click();
+
+        WebElement errorPassword = driver.findElement(By.xpath("//div[@id='error-for-password']"));
+
+        errorPassword.isDisplayed();
+
+        Assert.assertEquals(errorPassword.getText(), "Это неверный пароль. Повторите попытку или измените пароль.",
+                "Password is wrong");
         driver.quit();
     }
 }
