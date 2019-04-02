@@ -27,20 +27,17 @@ public class LinkedinLoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
 
-        WebElement mailField = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
-        WebElement passField = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
-        WebElement submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
+        LoginPage loginPage = new LoginPage(driver);
+        Assert.assertTrue(loginPage.isPageLoaded(),
+                "Login page was not loaded.");
+        loginPage.login("yura.ultra@gmail.comxx","Ultra_777");
 
-        mailField.sendKeys("yura.ultra@ggmail.com");
-        passField.sendKeys("Ultra_777");
-        submit.click();
-
-        WebElement errorUserName = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-
-        errorUserName.isDisplayed();
-
-        Assert.assertTrue(errorUserName.getText().contains("Этот адрес эл. почты не зарегистрирован в LinkedIn."),
+        ErrorPage errorPage = new ErrorPage(driver);
+        Assert.assertTrue(errorPage.isPageLoaded(),
+                "Error page was not loaded.");
+        Assert.assertTrue(errorPage.loginFail(),
                 "Login is wrong");
+
         driver.quit();
     }
     @Test
