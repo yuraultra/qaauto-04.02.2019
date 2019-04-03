@@ -45,20 +45,14 @@ public class LinkedinLoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
 
-        WebElement mailField = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
-        WebElement passField = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
-        WebElement submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
+        LoginPage loginPage = new LoginPage(driver);
+        Assert.assertTrue(loginPage.isPageLoaded(),
+                "Login page was not loaded.");
+        loginPage.login("yura.ultra@gmail.com","");
 
-        mailField.sendKeys("yura.ultra@gmail.com");
-        passField.sendKeys("Ultra");
-        submit.click();
+        Assert.assertTrue(loginPage.isPageLoaded(),
+                "Login page was not loaded.");
 
-        WebElement errorPassword = driver.findElement(By.xpath("//div[@id='error-for-password']"));
-
-        errorPassword.isDisplayed();
-
-        Assert.assertEquals(errorPassword.getText(), "Это неверный пароль. Повторите попытку или измените пароль.",
-                "Password is wrong");
         driver.quit();
     }
 }
