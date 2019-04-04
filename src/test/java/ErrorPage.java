@@ -19,7 +19,7 @@ public class ErrorPage {
         return errorUserName.isDisplayed();
     }
 
-    public boolean loginFail() {
+    public boolean isUserNameErrorPresent() {
         return errorUserName.getText().contains("Этот адрес эл. почты не зарегистрирован в LinkedIn.");
     }
 }

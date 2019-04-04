@@ -33,7 +33,7 @@ public class LinkedinLoginTest {
         ErrorPage errorPage = new ErrorPage(driver);
         Assert.assertTrue(errorPage.isPageLoaded(),
                 "Error page was not loaded.");
-        Assert.assertTrue(errorPage.loginFail(),
+        Assert.assertTrue(errorPage.isUserNameErrorPresent(),
                 "Unknown error");
 
         driver.quit();
