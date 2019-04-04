@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LinkedinLoginTest {
@@ -22,11 +23,19 @@ public class LinkedinLoginTest {
         driver.quit();
     }
 
-    @Test
-    public void successfulLoginTest() {
+    @DataProvider
+    public Object[][] validDataProvider() {
+        return new Object[][]{
+                { "linkedin.tst.yanina@gmail.com", "Mykola123" },
+                { "linkedin.TST.yanina@gmail.com", "Mykola123" }
+        };
+    }
+
+    @Test(dataProvider = "validDataProvider")
+    public void successfulLoginTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
-        loginPage.login("yura.ultra@gmail.com", "Ultra_777");
+        loginPage.login(userEmail, userPassword);
 
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isPageLoaded(),
