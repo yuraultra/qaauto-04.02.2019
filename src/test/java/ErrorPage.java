@@ -3,15 +3,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ErrorPage {
-    WebDriver driver;
-    WebElement errorUserName;
+    private WebDriver driver;
+    private WebElement errorUserName;
 
     public ErrorPage(WebDriver driver) {
         this.driver = driver;
         initElements();
     }
 
-    public void initElements() {
+    private void initElements() {
         errorUserName = driver.findElement(By.xpath("//div[@id='error-for-username']"));
     }
 

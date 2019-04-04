@@ -3,15 +3,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePage {
-    WebDriver driver;
-    WebElement profileNavigationItem;
+    private WebDriver driver;
+    private WebElement profileNavigationItem;
 
     public HomePage(WebDriver driver){
         this.driver = driver;
         initElement();
     }
 
-    public void initElement(){
+    private void initElement(){
         profileNavigationItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
