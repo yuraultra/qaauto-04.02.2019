@@ -35,6 +35,9 @@ public class LinkedinLoginTest {
                 "Error page was not loaded.");
         Assert.assertTrue(errorPage.isUserNameErrorPresent(),
                 "Unknown error");
+        Assert.assertEquals(errorPage.isUserNameErrorPresent(),
+                "Hmm, that's not the right password. Please try again or request a new one.",
+                "userPassword validation message is incorrect.");
 
         driver.quit();
     }
