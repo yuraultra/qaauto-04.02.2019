@@ -39,7 +39,7 @@ public class LinkedinLoginTest {
         driver.quit();
     }
     @Test
-    public void notSuccessfulPasswordTest() {
+    public void emptyFieldLoginPassword() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.linkedin.com");
 
