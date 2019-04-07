@@ -42,28 +42,75 @@ public class LinkedinLoginTest {
                 "Home page is not loaded.");
     }
 
-    @Test
-    public void notSuccessfulLoginTest() {
+
+
+
+    @DataProvider
+    public Object[][] wrongLoginDataProvider() {
+        return new Object[][]{
+                { "yura.ultra@@gmail.com", "Ultra_777" },
+                { "yura.ultra@gmail..com", "Ultra_777" },
+                { "Yyura.ultra@gmail.com", "Ultra_777" }
+        };
+    }
+
+    @Test(dataProvider = "wrongLoginDataProvider")
+    public void notSuccessfulLoginTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
-        loginPage.login("yura.ultra@gmail.comxx", "Ultra_777");
+        loginPage.login(userEmail, userPassword);
 
         ErrorPage errorPage = new ErrorPage(driver);
         Assert.assertTrue(errorPage.isPageLoaded(),
                 "Error page was not loaded.");
-        Assert.assertTrue(errorPage.isUserNameErrorPresent(),
-                "Unknown error");
-        Assert.assertEquals(errorPage.isUserNameErrorPresent(),
-                "Hmm, that's not the right password. Please try again or request a new one.",
-                "userPassword validation message is incorrect.");
-
+        Assert.assertEquals(errorPage.getUserEmailValidationMessage(),
+                "Этот адрес эл. почты не зарегистрирован в LinkedIn. Повторите попытку.",
+                "userEmail validation message is incorrect.");
     }
 
-    @Test
-    public void emptyFieldLoginPassword() {
+
+
+
+    @DataProvider
+    public Object[][] wrongPassworDataProvider() {
+        return new Object[][]{
+                { "yura.ultra@gmail.com", "Ultra_777" },
+                { "yura.ultra@gmail.com", "ULTRA_777" },
+                { "yura.ultra@gmail.com", "ultra_777" }
+        };
+    }
+
+    @Test(dataProvider = "wrongPassworDataProvider")
+    public void notSuccessfulPasswordTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
-        loginPage.login("yura.ultra@gmail.com", "");
+        loginPage.login(userEmail, userPassword);
+
+        ErrorPage errorPage = new ErrorPage(driver);
+        Assert.assertTrue(errorPage.isPageLoaded(),
+                "Error page was not loaded.");
+        Assert.assertEquals(errorPage.getUserPasswordValidationMessage(),
+                "Это неверный пароль. Повторите попытку или измените пароль.",
+                "userPassword validation message is incorrect.");
+    }
+
+
+
+
+    @DataProvider
+    public Object[][] emptyFieldDataProvider() {
+        return new Object[][]{
+                { "yura.ultra@gmail.com", "" },
+                { "", "Mykola123" },
+                { "", "" }
+        };
+    }
+
+    @Test(dataProvider = "emptyFieldDataProvider")
+    public void emptyFieldLoginPassword(String userEmail, String userPassword) {
+        Assert.assertTrue(loginPage.isPageLoaded(),
+                "Login page was not loaded.");
+        loginPage.login(userEmail, userPassword);
 
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");

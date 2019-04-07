@@ -4,7 +4,9 @@ import org.openqa.selenium.WebElement;
 
 public class ErrorPage {
     private WebDriver driver;
-    private WebElement errorUserName;
+    private WebElement loginSubmitForm;
+    private WebElement userEmailValidationMessage;
+    private WebElement userPasswordValidationMessage;
 
     public ErrorPage(WebDriver driver) {
         this.driver = driver;
@@ -12,14 +14,21 @@ public class ErrorPage {
     }
 
     private void initElements() {
-        errorUserName = driver.findElement(By.xpath("//div[@id='error-for-username']"));
+        loginSubmitForm = driver.findElement(By.xpath("//form[@action='/checkpoint/lg/login-submit']"));
+        userEmailValidationMessage = driver.findElement(By.xpath("//div[@id='error-for-username']"));
+        userPasswordValidationMessage = driver.findElement(By.xpath("//div[@id='error-for-password']"));
     }
 
     public boolean isPageLoaded() {
-        return errorUserName.isDisplayed();
+        return loginSubmitForm.isDisplayed();
     }
 
-    public boolean isUserNameErrorPresent() {
-        return errorUserName.getText().contains("Этот адрес эл. почты не зарегистрирован в LinkedIn.");
+    public String getUserEmailValidationMessage() {
+        return userEmailValidationMessage.getText();
     }
+
+    public String getUserPasswordValidationMessage() {
+        return userPasswordValidationMessage.getText();
+    }
+
 }
