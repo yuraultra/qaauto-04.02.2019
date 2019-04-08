@@ -20,11 +20,12 @@ public class LoginPage {
         submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
     }
 
-    public void login(String userEmail, String userPassword){
+    public HomePage login(String userEmail, String userPassword){
          mailField.sendKeys(userEmail);
          passField.sendKeys(userPassword);
          submit.click();
-     }
+        return new HomePage(driver);
+    }
 
     public boolean isPageLoaded() {
         return submit.isDisplayed();
