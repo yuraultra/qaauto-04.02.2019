@@ -11,12 +11,12 @@ public class HomePage {
         initElement();
     }
 
-    private void initElement(){
+    public void initElement(){
         profileNavigationItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
     public boolean isPageLoaded() {
         return profileNavigationItem.isDisplayed()
-        && driver.getTitle().equals("Linkedin");
+        && driver.getTitle().contains("Linkedin");
     }
 }

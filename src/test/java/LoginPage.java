@@ -14,17 +14,31 @@ public class LoginPage {
         initElements();
     }
 
-    private void initElements(){
+    private void initElements() {
         mailField = driver.findElement(By.xpath("//input[@class='login-email reg-field__input']"));
         passField = driver.findElement(By.xpath("//input[@class='login-password reg-field__input']"));
         submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
     }
 
-    public HomePage login(String userEmail, String userPassword){
-         mailField.sendKeys(userEmail);
-         passField.sendKeys(userPassword);
-         submit.click();
+    public HomePage login(String userEmail, String userPassword) {
+        mailField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        submit.click();
         return new HomePage(driver);
+    }
+
+    public LoginPage loginToLoginPage(String userEmail, String userPassword) {
+        mailField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        submit.click();
+        return new LoginPage(driver);
+    }
+
+    public ErrorPage loginToErrorPage(String userEmail, String userPassword) {
+        mailField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        submit.click();
+        return new ErrorPage(driver);
     }
 
     public boolean isPageLoaded() {

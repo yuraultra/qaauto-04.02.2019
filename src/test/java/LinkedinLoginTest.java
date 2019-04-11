@@ -26,9 +26,7 @@ public class LinkedinLoginTest {
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
-         //       { "yura.ultra@gmail.com", "Ultra_777" },
-         //       { "Yura.ultra@gmail.com", "Ultra_777" },
-                { " yura.ultra@gmail.com ", "Ultra_777" }
+               { " yura.ultra@gmail.com ", "Ultra_777" }
         };
     }
 
@@ -36,15 +34,13 @@ public class LinkedinLoginTest {
     public void successfulLoginTest(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
-        HomePage homePage = loginPage.login(userEmail, userPassword);
 
+        HomePage homePage = loginPage.login(userEmail, userPassword);
         //HomePage homePage = new HomePage(driver);
+
         Assert.assertTrue(homePage.isPageLoaded(),
                 "Home page is not loaded.");
     }
-
-
-
 
     @DataProvider
     public Object[][] wrongLoginDataProvider() {
@@ -59,12 +55,14 @@ public class LinkedinLoginTest {
                                        String userPassword,
                                        String emailValidation,
                                        String passwordValidation) {
+
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
 
-        loginPage.login(userEmail, userPassword);
+        ErrorPage errorPage = loginPage.loginToErrorPage(userEmail, userPassword);
 
-        ErrorPage errorPage = new ErrorPage(driver);
+        //ErrorPage errorPage = new ErrorPage(driver);
+
         Assert.assertTrue(errorPage.isPageLoaded(),
                 "Error page was not loaded.");
         Assert.assertEquals(errorPage.getUserEmailValidationMessage(),
@@ -91,7 +89,9 @@ public class LinkedinLoginTest {
     public void emptyFieldLoginPassword(String userEmail, String userPassword) {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
-        loginPage.login(userEmail, userPassword);
+
+        LoginPage loginPage1 = loginPage.loginToLoginPage(userEmail, userPassword);
+        //loginPage.login(userEmail, userPassword);
 
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
