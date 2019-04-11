@@ -59,7 +59,7 @@ public class LinkedinLoginTest {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
 
-        ErrorPage errorPage = loginPage.loginToErrorPage(userEmail, userPassword);
+        ErrorPage errorPage = loginPage.login(userEmail, userPassword);
 
         //ErrorPage errorPage = new ErrorPage(driver);
 
@@ -90,10 +90,10 @@ public class LinkedinLoginTest {
         Assert.assertTrue(loginPage.isPageLoaded(),
                 "Login page was not loaded.");
 
-        LoginPage loginPage1 = loginPage.loginToLoginPage(userEmail, userPassword);
+        LoginPage loginPage1 = loginPage.login(userEmail, userPassword);
         //loginPage.login(userEmail, userPassword);
 
-        Assert.assertTrue(loginPage.isPageLoaded(),
+        Assert.assertTrue(loginPage1.isPageLoaded(),
                 "Login page was not loaded.");
     }
 }

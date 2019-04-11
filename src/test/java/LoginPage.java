@@ -20,6 +20,21 @@ public class LoginPage {
         submit = driver.findElement(By.xpath("//input[@class='login submit-button']"));
     }
 
+    public <GenericPage> GenericPage login(String userEmail, String userPassword) {
+        mailField.sendKeys(userEmail);
+        passField.sendKeys(userPassword);
+        submit.click();
+        if (driver.getCurrentUrl().contains("/feed")) {
+            return (GenericPage) new HomePage(driver);
+        }
+        if (driver.getCurrentUrl().contains("/login-submit")) {
+            return (GenericPage) new ErrorPage(driver);
+        } else {
+            return (GenericPage) new LoginPage(driver);
+        }
+    }
+
+    /*
     public HomePage login(String userEmail, String userPassword) {
         mailField.sendKeys(userEmail);
         passField.sendKeys(userPassword);
@@ -39,9 +54,9 @@ public class LoginPage {
         passField.sendKeys(userPassword);
         submit.click();
         return new ErrorPage(driver);
-    }
+    } */
 
-    public boolean isPageLoaded() {
-        return submit.isDisplayed();
+        public boolean isPageLoaded () {
+            return submit.isDisplayed();
+        }
     }
-}
