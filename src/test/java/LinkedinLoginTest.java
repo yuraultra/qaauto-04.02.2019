@@ -26,7 +26,7 @@ public class LinkedinLoginTest {
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
-               { " yura.ultra@gmail.com ", "Ultra_777" }
+               { " yura.ultra@gmail.com ", "Ultra_Daiver" }
         };
     }
 
@@ -36,7 +36,6 @@ public class LinkedinLoginTest {
                 "Login page was not loaded.");
 
         HomePage homePage = loginPage.login(userEmail, userPassword);
-        //HomePage homePage = new HomePage(driver);
 
         Assert.assertTrue(homePage.isPageLoaded(),
                 "Home page is not loaded.");
@@ -61,8 +60,6 @@ public class LinkedinLoginTest {
 
         ErrorPage errorPage = loginPage.login(userEmail, userPassword);
 
-        //ErrorPage errorPage = new ErrorPage(driver);
-
         Assert.assertTrue(errorPage.isPageLoaded(),
                 "Error page was not loaded.");
         Assert.assertEquals(errorPage.getUserEmailValidationMessage(),
@@ -72,8 +69,6 @@ public class LinkedinLoginTest {
                 passwordValidation,
                 "userPassword validation message is incorrect.");
     }
-
-
 
 
     @DataProvider
@@ -91,7 +86,6 @@ public class LinkedinLoginTest {
                 "Login page was not loaded.");
 
         LoginPage loginPage1 = loginPage.login(userEmail, userPassword);
-        //loginPage.login(userEmail, userPassword);
 
         Assert.assertTrue(loginPage1.isPageLoaded(),
                 "Login page was not loaded.");

@@ -17,7 +17,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+      //  PageFactory.initElements(driver, this);
     }
 
     public <GenericPage> GenericPage login(String userEmail, String userPassword) {
@@ -25,7 +25,7 @@ public class LoginPage {
         passField.sendKeys(userPassword);
         submit.click();
         if (driver.getCurrentUrl().contains("/feed")) {
-            return (GenericPage) new HomePage(driver);
+            return (GenericPage) PageFactory.initElements(driver, HomePage.class);
         }
         if (driver.getCurrentUrl().contains("/login-submit")) {
             return (GenericPage) new ErrorPage(driver);
