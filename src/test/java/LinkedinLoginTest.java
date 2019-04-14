@@ -18,15 +18,15 @@ public class LinkedinLoginTest {
         loginPage = new LoginPage(driver);
     }
 
-    @AfterMethod
-    public void afterMethod() {
-        driver.quit();
-    }
+    //@AfterMethod
+    //public void afterMethod() {
+    //    driver.quit();
+    //}
 
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
-               { " yura.ultra@gmail.com ", "Ultra_Daiver" }
+               { " yura.ultra@gmail.com ", "Ultra_777" }
         };
     }
 
@@ -89,5 +89,34 @@ public class LinkedinLoginTest {
 
         Assert.assertTrue(loginPage1.isPageLoaded(),
                 "Login page was not loaded.");
+    }
+
+
+
+
+    @DataProvider
+    public Object[][] searchDataProvider() {
+        return new Object[][]{
+                { " yura.ultra@gmail.com ", "Ultra_777" }
+        };
+    }
+
+    @Test(dataProvider = "searchDataProvider")
+    public void loginTestSearch(String userEmail, String userPassword) {
+        Assert.assertTrue(loginPage.isPageLoaded(),
+                "Login page was not loaded.");
+
+        SearchHrPage searchHrPage = loginPage.login(userEmail, userPassword);
+
+        Assert.assertTrue(searchHrPage.isPageLoaded(),
+                "Home page is not loaded.");
+
+        searchHrPage.EnterHrSearchField();
+
+        Assert.assertTrue(searchHrPage.isPageLoadedSearchResult(),
+                "Result search page is not loaded.");
+
+
+
     }
 }
