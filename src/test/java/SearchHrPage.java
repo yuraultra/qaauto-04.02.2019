@@ -28,7 +28,7 @@ public class SearchHrPage {
         return profileNavigationItem.isDisplayed();
     }
 
-    public void EnterHrSearchField() {
+    public void enterHrSearchField() {
         fieldSearch.sendKeys("HR");
         fieldSearch.sendKeys(Keys.ENTER);
     }
@@ -37,15 +37,21 @@ public class SearchHrPage {
         return lineResultSearch.isDisplayed();
     }
 
-    List<WebElement> searchResults = driver.findElements(By.xpath("//div[@class='search-result__wrapper']"));
+
+    public void something () {
+        List<WebElement> searchResults = driver.findElements(By.xpath("//div[@class='search-result__wrapper']"));
         int count = 0;
-        for (WebElement searchResult : searchResults) {
+        for(WebElement searchResult :searchResults)
+        {
             count++;
-        String searchResultString = searchResult.getText();
-        if (searchResultString.toLowerCase().contains("Human Resources".toLowerCase())) {
-            System.out.println("OK   " + searchResult.getText() + "\n");
-        } else {
-            System.out.println("Not OK   " + searchResult.getText());
+            String searchResultString = searchResult.getText();
+            if (searchResultString.toLowerCase().contains("Human Resources".toLowerCase())) {
+                System.out.println("OK   " + searchResult.getText() + "\n");
+            } else {
+                System.out.println("Not OK   " + searchResult.getText());
+            }
         }
     }
+
+
 }

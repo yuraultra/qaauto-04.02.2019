@@ -18,10 +18,10 @@ public class LinkedinLoginTest {
         loginPage = new LoginPage(driver);
     }
 
-    //@AfterMethod
-    //public void afterMethod() {
-    //    driver.quit();
-    //}
+    @AfterMethod
+    public void afterMethod() {
+        driver.quit();
+    }
 
     @DataProvider
     public Object[][] validDataProvider() {
@@ -111,7 +111,7 @@ public class LinkedinLoginTest {
         Assert.assertTrue(searchHrPage.isPageLoaded(),
                 "Home page is not loaded.");
 
-        searchHrPage.EnterHrSearchField();
+        searchHrPage.enterHrSearchField();
 
         Assert.assertTrue(searchHrPage.isPageLoadedSearchResult(),
                 "Result search page is not loaded.");
