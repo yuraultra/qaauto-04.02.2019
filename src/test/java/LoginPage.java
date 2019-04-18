@@ -27,9 +27,6 @@ public class LoginPage {
         if (driver.getCurrentUrl().contains("/feed")) {
             return (GenericPage) new HomePage(driver);
         }
-        //if (driver.getCurrentUrl().contains("/feed")) {
-         //   return (GenericPage) new SearchHrPage(driver);
-        //}
         if (driver.getCurrentUrl().contains("/login-submit")) {
             return (GenericPage) new ErrorPage(driver);
         } else {

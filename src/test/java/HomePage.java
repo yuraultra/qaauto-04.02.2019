@@ -21,8 +21,8 @@ public class HomePage {
     }
 
     public boolean isPageLoaded() {
-        return profileNavigationItem.isDisplayed();
-        //&& driver.getTitle().contains("Linkedin");
+        return profileNavigationItem.isDisplayed()
+        && driver.getTitle().contains("Linked");
     }
 
     public SearchResultsPage search(String searchTerm) {
