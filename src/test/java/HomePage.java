@@ -26,7 +26,7 @@ public class HomePage {
     }
 
     public SearchResultsPage search(String searchTerm) {
-        searchField.sendKeys("HR");
+        searchField.sendKeys(searchTerm);
         searchField.sendKeys(Keys.ENTER);
         try {
             sleep(3000);

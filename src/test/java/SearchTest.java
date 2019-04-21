@@ -26,7 +26,7 @@ public class SearchTest {
     @Test
     public void basicSearchTest(){
         String userEmail = "yura.ultra@gmail.com";
-        String userPassword = "Ultra_Daiver";
+        String userPassword = "Ultra_777";
         String searchTerm = "Human";
 
         Assert.assertTrue(loginPage.isPageLoaded(),
