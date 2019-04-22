@@ -1,10 +1,11 @@
+package Page;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ErrorPage {
-    private WebDriver driver;
+public class ErrorPage extends BasePage{
 
     @FindBy(xpath="//form[@action='/checkpoint/lg/login-submit']")
     private WebElement loginSubmitForm;

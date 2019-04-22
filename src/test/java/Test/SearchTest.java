@@ -1,27 +1,14 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+package Test;
+
+import Page.HomePage;
+import Page.SearchResultsPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SearchTest {
-    WebDriver driver;
-    LoginPage loginPage;
+public class SearchTest extends BaseTest{
 
-    @BeforeMethod
-    public void beforeMethod() {
-        driver = new ChromeDriver();
-        driver.get("https://www.linkedin.com");
-        loginPage = new LoginPage(driver);
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        driver.quit();
-    }
 
     @Test
     public void basicSearchTest(){

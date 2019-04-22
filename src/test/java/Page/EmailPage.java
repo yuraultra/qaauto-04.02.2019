@@ -1,3 +1,5 @@
+package Page;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -5,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
-public class EmailPage {
-    private WebDriver driver;
+public class EmailPage extends BasePage{
 
     @FindBy(xpath = "//input[@type='email']")
     private WebElement loginField;
@@ -49,7 +50,7 @@ public class EmailPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //loginSubmitButton.click();
+        loginSubmitButton.click();
     }
 
     public void clickToLinkedInMail(){
@@ -69,5 +70,9 @@ public class EmailPage {
 
     public boolean isGmailConteinsLinkedIn() {
         return emailLinkedInPost.isDisplayed();
+    }
+
+    public boolean isPageLoaded() {
+        return false;
     }
 }

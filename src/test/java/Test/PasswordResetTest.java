@@ -1,3 +1,7 @@
+package Test;
+
+import Page.EmailPage;
+import Page.PasswordResetPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -7,8 +11,8 @@ import org.testng.annotations.Test;
 
 public class PasswordResetTest {
     WebDriver driver;
-    PasswordResetPage PasswordResetPage;
-    EmailPage EmailPage;
+    Page.PasswordResetPage PasswordResetPage;
+    Page.EmailPage EmailPage;
 
     @BeforeMethod
     public void beforeMethod() {

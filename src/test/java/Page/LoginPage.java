@@ -1,10 +1,14 @@
+package Page;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-    private WebDriver driver;
+/**
+ * Page object class for LoginPage
+ */
+public class LoginPage extends BasePage{
 
     @FindBy(xpath="//input[@class='login-email reg-field__input']")
     private WebElement mailField;
@@ -15,6 +19,10 @@ public class LoginPage {
     @FindBy(xpath="//input[@class='login submit-button']")
     private WebElement submit;
 
+    /**
+     * Constructor of LoginPage object.
+     * @param driver WebDriver instance from BaseTest.
+     */
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

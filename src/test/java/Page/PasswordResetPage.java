@@ -1,3 +1,5 @@
+package Page;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -5,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
-public class PasswordResetPage {
-    private WebDriver driver;
+public class PasswordResetPage extends BasePage{
+
 
     @FindBy(xpath="//a[@class='link-forgot-password']")
     private WebElement passwordResetLink;
@@ -62,5 +64,9 @@ public class PasswordResetPage {
 
     public boolean isOkSendEmail() {
         return sendMailOk.isDisplayed();
+    }
+
+    public boolean isPageLoaded() {
+        return false;
     }
 }

@@ -1,3 +1,5 @@
+package Page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class SearchHrPage {
-    private WebDriver driver;
+public class SearchHrPage extends BasePage{
 
     @FindBy(xpath = "//input[@placeholder='Поиск']")
     private WebElement fieldSearch;
