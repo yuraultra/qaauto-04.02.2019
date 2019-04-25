@@ -14,9 +14,15 @@ public class SearchResultsPage extends BasePage{
     @FindBy(xpath="//li[contains(@class, 'search-result__occluded-item')]")
     private List<WebElement> searchResults;
 
+    @FindBy(xpath="//h3[contains(@class, 'search-results__total ')]")
+    private List<WebElement> totalResults;
+
+
+
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        waitUntilElementInVisible(totalResults);
     }
 
     public boolean isPageLoaded() {
