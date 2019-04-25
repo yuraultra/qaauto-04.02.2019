@@ -28,6 +28,14 @@ public class LoginPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * Метод для авторизации пользователя
+     *
+     * @param userEmail - логин пользователя
+     * @param userPassword - пароль пользователя
+     * @param <GenericPage> - специальный конструктор позволяющий получать разный результат в звисимости от входящих условий
+     * @return - возвращает необходимую нам страницу(класс)
+     */
     public <GenericPage> GenericPage login(String userEmail, String userPassword) {
         mailField.sendKeys(userEmail);
         passField.sendKeys(userPassword);
@@ -42,6 +50,10 @@ public class LoginPage extends BasePage{
         }
     }
 
+    /**
+     * Метод позволяющий проверить наличие элементов на экране
+     * @return - возвращает (правда/лож)
+     */
         public boolean isPageLoaded () {
             return submit.isDisplayed();
         }
