@@ -15,7 +15,7 @@ public class LinkedinLoginTest extends BaseTest{
     @DataProvider
     public Object[][] validDataProvider() {
         return new Object[][]{
-               { " yura.ultra@gmail.com ", "Ultra_777" }
+               { "Test.yura.ultra@gmail.com", "Test_Yura_Ultra" }
         };
     }
 
@@ -33,8 +33,8 @@ public class LinkedinLoginTest extends BaseTest{
     @DataProvider
     public Object[][] wrongLoginDataProvider() {
         return new Object[][]{
-                { "yura.ultra@gmail.com", "Ultra_777", "", "Это неверный пароль. Повторите попытку или измените пароль."},
-                { "yura.ultra@@gmail.com", "Ultra_777", "Этот адрес эл. почты не зарегистрирован в LinkedIn. Повторите попытку.", ""}
+                { "yura.ultra@gmail.com", "Test_Yura_", "", "Это неверный пароль. Повторите попытку или измените пароль."},
+                { "yura.ultra@@gmail.com", "Test_Yura_Ultra", "Этот адрес эл. почты не зарегистрирован в LinkedIn. Повторите попытку.", ""}
         };
     }
 
@@ -86,7 +86,7 @@ public class LinkedinLoginTest extends BaseTest{
     @DataProvider
     public Object[][] searchDataProvider() {
         return new Object[][]{
-                { " yura.ultra@gmail.com ", "Ultra_777" }
+                { "Test.yura.ultra@gmail.com", "Test_Yura_Ultra" }
         };
     }
 
