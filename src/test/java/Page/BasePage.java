@@ -24,7 +24,7 @@ public abstract class BasePage {
 
     public void waitUntilElementInVisible(WebElement webElement){
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(webElement))
+        wait.until(ExpectedConditions.visibilityOf(webElement));
 
     }
 }
