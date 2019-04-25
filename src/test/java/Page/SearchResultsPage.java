@@ -15,7 +15,7 @@ public class SearchResultsPage extends BasePage{
     private List<WebElement> searchResults;
 
     @FindBy(xpath="//h3[contains(@class, 'search-results__total ')]")
-    private List<WebElement> totalResults;
+    private WebElement totalResults;
 
 
 
